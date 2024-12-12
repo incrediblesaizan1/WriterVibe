@@ -9,17 +9,24 @@
 </head>
 <body class="w-full min-h-screen  text-white bg-[url('/images/download.svg')] bg-cover bg-center h-screen">
     <header>
-        <nav class="flex justify-between sticky top-0 z-10 p-5">
-            <h1 class="text-3xl ml-1">WriteVibe</h1>
-            <a href="/" class="bg-green-500 rounded-md px-3 py-2 relative top-[3px] text-sm mb-5  inline-block ">Register</a>
+        <nav class="flex justify-between sm:flex-row sm:items-center sm:justify-between sticky top-0 z-10 p-5">
+            <h1 class="text-2xl sm:text-3xl">WriteVibe</h1>
+            <div class="flex gap-3">
+                <a href="/" class="bg-green-500 rounded-md px-4 py-2 text-sm sm:text-base  sm:mt-0 lg:mt-2">
+                    Home
+                </a>
+                <a href="/register" class="bg-green-500 rounded-md px-4 py-2 text-sm sm:text-base  sm:mt-0 lg:mt-2">
+                    Register
+                </a>
+            </div>
         </nav>
-        <hr class="mt-[-54px]  ml-40 mr-24">
+        <hr class="border-t border-gray-600 mx-5 sm:mt-[-34px] sm:ml-40 sm:mr-52 lg:mt-[-2.5rem] ">
     </header>
     <div class="content-center h-[80vh] flex flex-col justify-center">  
-        <h1 class="text-3xl px-56 py-4">Login</h1>
+        <h1 class="text-3xl px-6 lg:px-56 py-4">Login</h1>
         <form action="/login" method="post" class="flex flex-col items-center">
-            <input class="px-3 py-2 my-1 w-2/3 rounded-md bg-transparent border-2 border-zinc-100 outline-none" type="text" name="email" placeholder="E-mail">
-            <input class="px-3 py-2 my-1 w-2/3 rounded-md bg-transparent border-2 border-zinc-100 outline-none" type="password" name="password" placeholder="Password">
+            <input class="px-3 py-2 my-1 w-[90%] lg:w-2/3 rounded-md bg-transparent border-2 border-zinc-100 outline-none" type="text" name="email" placeholder="E-mail">
+            <input class="px-3 py-2 my-1 w-[90%] lg:w-2/3 rounded-md bg-transparent border-2 border-zinc-100 outline-none" type="password" name="password" placeholder="Password">
             <input class="px-5 py-2 my-1 w-32 rounded-md bg-yellow-500" type="submit" value="Login">
         </form>
     </div>

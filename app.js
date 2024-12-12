@@ -43,6 +43,7 @@ app.get("/feed", async (req, res) => {
   if (req.cookies.token) {
     res.redirect("/feed/loggedin");
   } else {
+    res.cookie("token", "hello how are you")
     res.render("feed", { post });
   }
 });
@@ -73,10 +74,7 @@ app.post("/login", async (req, res) => {
     if (!result) {
       res.redirect("/login");
     } else {
-      let token = jwt.sign(
-        { email: email, username: user.username, userid: user._id },
-        "slsldlkff"
-      );
+      let token = jwt.sign({ email: email, username: user.username, userid: user._id },"slsldlkff");
       res.cookie("token", token);
       res.redirect("/profile");
     }

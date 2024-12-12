@@ -17,9 +17,9 @@
     </header>
     <div class="content-center h-[80vh] flex flex-col justify-center" >
         <div    class="w-56 h-56 mx-auto mb-[-10px] mt-[-10px] bg-red-500 rounded-full" ><img class=" w-full h-full  rounded-full object-cover " src="/images/uploads/<%= user.dp %>" alt=""></div>
-        <h1 class="text-3xl px-56 py-4">Upload Profile Picture </h1>
+        <h1 class="text-xl lg:text-3xl  px-6  lg:px-56 py-4 ">Upload Profile Picture </h1>
         <form action="/dp" method="post" class="flex justify-center items-center" enctype="multipart/form-data">
-            <input type="file" name="image" class="">
+            <input type="file" name="image" class="w-24 lg:w-[50%]">
             <input class="px-5 py-2 my-1 w-32 rounded-md bg-blue-500" type="submit" value="Upload Image">
         </form>
     </div>
