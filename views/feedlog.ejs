@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/output.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>WriteVibe</title>
+</head>
+<body class="w-full min-h-screen text-white bg-[url('/images/download.svg')] bg-cover bg-right-top h-screen">
+
+<header>
+    <nav class="flex justify-between sm:flex-row sm:items-center sm:justify-between sticky top-0 z-10 p-5">
+        <h1 class="text-2xl sm:text-3xl">WriteVibe</h1>
+        <a href="/logout" class="bg-red-500 rounded-md px-4 py-2 text-sm sm:text-base  sm:mt-0 lg:mt-2">
+            Logout
+        </a>
+    </nav>
+    <hr class="border-t border-gray-600 mx-5 sm:mt-[-34px] sm:ml-40 sm:mr-28 lg:mt-[-2.5rem] ">
+</header>
+
+<div class="p-10">  
+      <h1 class="text-3xl"><span  class="text-3xl text-blue-300">Writes</span>~</h1>
+</div>
+<div class="posts">
+    <div class="flex flex-wrap w-full -mx-0 sm:mx-2">
+        <% post.reverse().forEach((post) => { %>
+            <div class="post mb-4 sm:m-2 border rounded-lg h-48 w-full sm:w-[48%] lg:w-[32%] flex flex-col">
+                <div class="flex justify-between p-2">
+                    <div class="flex items-center">
+                        <img class="w-[32px] h-[32px] rounded-full object-cover mr-1" src="/images/uploads/<%= post.user.dp %>" alt="helo">
+                        <h5 class="text-blue-500">@<%= post.user.username %></h5>
+                    </div>
+                    <% 
+                      let date = new Date(post.date);
+                      let formattedDate = date.getDate().toString().padStart(2, '0') + ' ' +
+                                          date.toLocaleString('en-US', { month: 'short' }).toUpperCase() + ', ' +
+                                          date.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+                    %>
+                    <h5 class="text-gray-500 text-xs sm:text-sm">
+                        <%= formattedDate %>
+                    </h5>
+                </div>
+                <div class="overflow-auto flex-grow p-2">
+                    <p class="tracking-tighter">
+                        <%= post.content %>
+                    </p>
+                </div>
+                <div class="flex justify-between bg-zinc-400 rounded-bl-md rounded-br-md p-2 border-t mt-auto">
+                    <a class="flex gap-1" href="/like/<%= post._id %>"><span class="relative bottom-1"><%= post.likes.length %></span><img class="w-[19px] h-[19px]" src="<%= post.likes.indexOf(post.user._id) !== -1 ? '/images/uploads/like.svg' : '/images/uploads/unlike.svg' %>" alt="">
+                    </a>
+                </div>  
+            </div>
+        <% }) %>
+    </div>
+</div>
+</body>
+</html>

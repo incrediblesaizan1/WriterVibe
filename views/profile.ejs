@@ -5,18 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/src/output.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Document</title>
+    <title>WriteVibe</title>
 </head>
 <body class="w-full min-h-screen text-white bg-[url('/images/download.svg')] bg-cover bg-right-top h-screen">
 
 <header>
     <nav class="flex justify-between sm:flex-row sm:items-center sm:justify-between sticky top-0 z-10 p-5">
         <h1 class="text-2xl sm:text-3xl">WriteVibe</h1>
+       <div class="flex gap-3"> 
+        <a href="/feed" class="bg-green-200 text-black rounded-md px-4 py-2 text-sm sm:text-base  sm:mt-0 lg:mt-2">
+            Writes
+        </a>
         <a href="/logout" class="bg-red-500 rounded-md px-4 py-2 text-sm sm:text-base  sm:mt-0 lg:mt-2">
             Logout
         </a>
+       </div>
     </nav>
-    <hr class="border-t border-gray-600 mx-5 sm:mt-[-34px] sm:ml-40 sm:mr-28 lg:mt-[-2.5rem] ">
+    <hr class="border-t border-gray-600 mx-5 sm:mt-[-34px] sm:ml-40 sm:mr-52 lg:mt-[-2.5rem] ">
 </header>
 
 <div class="p-10">
@@ -36,7 +41,7 @@
     </form>
 
     <div class="posts mt-10">
-        <h1 class="text-2xl font-bold">Your Posts</h1>
+        <h1 class="text-2xl font-bold">Your Writes</h1>
         <hr class="mb-6 border-t border-gray-600 sm:ml-32">
 
         <div class="flex flex-wrap w-full -mx-0 sm:mx-2">
