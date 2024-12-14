@@ -53,7 +53,7 @@
                             </p>
                         </div>
                         <div class="flex justify-between bg-transparent rounded-bl-md rounded-br-md p-2 border-t mt-auto">
-                            <a class="flex gap-1" href="/like/<%= post._id %>"><span class="relative bottom-1"><%= post.likes.length %></span><img class="w-[19px] h-[19px]" src="<%= post.likes.indexOf(post.user._id) !== -1 ? '/images/uploads/like.svg' : '/images/uploads/unlike.svg' %>" alt="">
+                            <a class="flex gap-1" href="/like/<%= post._id %>"><span class="relative bottom-1"><%= post.likes.length %></span><img class="w-[19px] h-[19px]" src="<%= post.likes.indexOf(user._id) !== -1 ? '/images/uploads/like.svg' : '/images/uploads/unlike.svg' %>" alt="">
                             </a>
                         </div>
                     </div>

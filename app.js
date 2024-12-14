@@ -42,8 +42,9 @@ app.get("/feed", async (req, res) => {
 });
 
 app.get("/feed/loggedin",isLoggedIn, async (req, res) => {
-  const post = await postModel.find().populate("user");
-  res.render("feedlog", { post });
+  const post = await postModel.find().populate("user"); 
+  const user = await userModel.findOne({email: req.user.email})
+  res.render("feedlog", { post, user });
 });
 
 app.get("/profile/upload", isLoggedIn, async (req, res) => {
