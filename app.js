@@ -37,7 +37,6 @@ app.get("/feed", async (req, res) => {
   if (req.cookies.token) {
     res.redirect("/feed/loggedin");
   } else {
-    res.cookie("token", "hello how are you")
     res.render("feed", { post });
   }
 });
