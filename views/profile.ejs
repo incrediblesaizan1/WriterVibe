@@ -8,7 +8,7 @@
     <title>WriteVibe</title>
 </head>
 <body class="w-full min-h-screen text-white relative">
-    <div class="absolute inset-0 bg-[url('/images/walpaper/BB1msOOX.jpg')] bg-cover bg-no-repeat bg-right-top brightness-[0.3] z-0"></div>
+    <div class="absolute inset-0 bg-[url('/images/walpaper/ef01c478-ba3b-4ee8-9d00-ee250a653e4a.jpg')] bg-cover bg-no-repeat bg-right-top brightness-[0.3] z-0"></div>
     
     <div class="relative z-10">
         <header>
@@ -29,7 +29,7 @@
         <div class="p-10">
             <div class="flex items-start">
                 <h1 class="text-[23px] relative top-8 lg:top-12 lg:text-4xl">Hello, <span class="text-blue-400 capitalize"><%= user.name %></span></h1>
-                <a href="/profile/upload" class="w-24 h-24 ml-4 lg:w-28 lg:h-28">
+                <a href="/profile/upload" class="w-24 mt-[-10px] relative top-[20px] h-24 ml-4 lg:w-28 lg:h-28">
                     <img class="w-full h-full rounded-full object-cover" src="/images/uploads/<%= user.dp %>" alt="">
                 </a>
             </div>
@@ -46,8 +46,8 @@
                 <hr class="mb-6 border-t border-gray-600 sm:ml-32">
 
                 <div class="flex flex-wrap w-full -mx-0 sm:mx-2">
-                    <% user.post.reverse().forEach((post) => { %>
-                        <div class="post mb-4 sm:m-2 border rounded-lg h-48 w-full sm:w-[48%] lg:w-[32%] flex flex-col">
+                    <% user.post.reverse().forEach((post) => { %>   
+                        <div class="post mb-4 sm:m-2 border rounded-lg min-h-40 max-h-62 w-full sm:w-[48%] lg:w-[32%] flex flex-col">
                             <div class="flex justify-between p-2">
                                 <h5 class="text-blue-500">@<%= user.username %></h5>
                                 <% 
@@ -61,7 +61,7 @@
                                 </h5>
                             </div>
                             <div class="overflow-auto flex-grow p-2">
-                                <p class="tracking-tighter">
+                                <p class="tracking-tighter mb-2">
                                     <%= post.content %>
                                 </p>
                             </div>

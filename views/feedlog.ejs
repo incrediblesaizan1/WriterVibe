@@ -31,7 +31,7 @@
         <div class="posts">
             <div class="flex flex-wrap w-full -mx-0 sm:mx-2">
                 <% post.reverse().forEach((post) => { %>
-                    <div class="post mb-4 mx-3 sm:m-2 border rounded-lg h-48 w-full sm:w-[48%] lg:w-[32%] flex flex-col">
+                    <div class="post mb-4 mx-3 sm:m-2 border rounded-lg  min-h-44 max-h-62 w-full sm:w-[48%] lg:w-[32%] flex flex-col">
                         <div class="flex justify-between p-2">
                             <div class="flex items-center">
                                 <img class="w-[32px] h-[32px] rounded-full object-cover mr-1" src="/images/uploads/<%= post.user.dp %>" alt="helo">
