@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/src/output.css">
+    <link rel="stylesheet" href="/stylesheets/index.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>WriteVibe</title>
 </head>
-<body class="overflow-auto min-h-screen text-white relative m-0">
+<body class="overflow-auto min-h-screen text-white relative m-0 custom-scrollbar">
     <div class="absolute inset-0 w-full bg-[url('/images/walpaper/8705b956-9dc9-4577-beb2-38b6a66c7b85.jpg')] bg-cover bg-no-repeat bg-right-top brightness-[0.3] z-0"></div>
     <div class="relative z-10">
         <header>
@@ -31,7 +32,7 @@
         <div class="posts overflow-hidden">
             <div class="flex flex-wrap w-full -mx-0 sm:mx-2">
                 <% post.reverse().forEach((post) => { %>
-                    <div class="post mb-4 sm:m-2 mx-3 lg:mx-2 border rounded-lg  min-h-44 max-h-62 w-full sm:w-[48%] lg:w-[32%] flex flex-col">
+                    <div class="post mb-4 sm:m-2 border rounded-lg min-h-40 max-h-56 w-full sm:w-[48%] lg:w-[32%] flex flex-col">
                         <div class="flex justify-between p-2">
                             <div class="flex items-center">
                                 <img class="w-[32px] h-[32px] rounded-full object-cover mr-1" src="/images/uploads/<%= post.user.dp %>" alt="helo">
@@ -47,8 +48,8 @@
                                 <%= formattedDate %>
                             </h5>
                         </div>
-                        <div class="overflow-auto flex-grow p-2">
-                            <p class="tracking-tighter">
+                        <div class="overflow-auto flex-grow p-2 custom-scrollbar2">
+                            <p class="tracking-tighter ">
                                 <%= post.content %>
                             </p>
                         </div>
