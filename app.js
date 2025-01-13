@@ -8,13 +8,14 @@ const path = require("path");
 const userModel = require("./models/user.model");
 const postModel = require("./models/post.model");
 const multer = require("./utils/multer.config");
-const isLoggedIn = require("./middleware/isloggedIn.middleware")
+const isLoggedIn = require("./middleware/isloggedIn.middleware");
+const fs = require("fs");
 
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));    
+app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", async (req, res) => {
   const post = await postModel.find().populate("user");
@@ -27,9 +28,17 @@ app.get("/register", (req, res) => {
 
 app.get("/profile", isLoggedIn, async (req, res) => {
   let user = await userModel
-    .findOne({$or: [{ email: req.user.email }, { username: req.user.username }]})
+    .findOne({
+      $or: [{ email: req.user.email }, { username: req.user.username }],
+    })
     .populate("post");
-  res.render("profile", { user: user });
+
+
+    fs.readdir(path.join(__dirname, 'public', 'images', 'walpaper'), (err, files) => {
+      let walpaper = files[Math.floor(Math.random() * files.length)]
+      res.render("profile", { user: user, walpaper });
+    });
+
 });
 
 app.get("/feed", async (req, res) => {
@@ -41,9 +50,9 @@ app.get("/feed", async (req, res) => {
   }
 });
 
-app.get("/feed/loggedin",isLoggedIn, async (req, res) => {
-  const post = await postModel.find().populate("user"); 
-  const user = await userModel.findOne({email: req.user.email})
+app.get("/feed/loggedin", isLoggedIn, async (req, res) => {
+  const post = await postModel.find().populate("user");
+  const user = await userModel.findOne({ email: req.user.email });
   res.render("feedlog", { post, user });
 });
 
@@ -62,13 +71,18 @@ app.post("/dp", isLoggedIn, multer.single("image"), async (req, res) => {
 
 app.post("/login", async (req, res) => {
   const { identifier, password } = req.body;
-  let user = await userModel.findOne({$or: [{ email: req.body.identifier }, { username: req.body.identifier }]});
+  let user = await userModel.findOne({
+    $or: [{ email: req.body.identifier }, { username: req.body.identifier }],
+  });
   if (!user) return res.status(500).send("User not found");
   bcrypt.compare(password, user.password, (err, result) => {
     if (!result) {
       res.redirect("/login");
     } else {
-      let token = jwt.sign({ email: user.email, username: user.username, userid: user._id },"slsldlkff");
+      let token = jwt.sign(
+        { email: user.email, username: user.username, userid: user._id },
+        "slsldlkff"
+      );
       res.cookie("token", token);
       res.redirect("/profile");
     }
