@@ -34,7 +34,7 @@ app.get("/profile", isLoggedIn, async (req, res) => {
     .populate("post");
 
 
-    fs.readdir(path.join(__dirname, 'public', 'images', 'walpaper'), ( files) => {
+    fs.readdir(path.join(__dirname, 'public', 'images', 'walpaper'), (files) => {
       let walpaper = files[Math.floor(Math.random() * files.length)]
       res.render("profile", { user: user, walpaper });
     });
