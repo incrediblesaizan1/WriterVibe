@@ -10,12 +10,14 @@ const postModel = require("./models/post.model");
 const multer = require("./utils/multer.config");
 const isLoggedIn = require("./middleware/isloggedIn.middleware");
 const fs = require("fs");
+const cors = require("cors")
 
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(cors())
 
 app.get("/", async (req, res) => {
   const post = await postModel.find().populate("user");
