@@ -1,5 +1,15 @@
 const mongoose = require("mongoose")
-mongoose.connect("mongodb://127.0.0.1:27017/miniproject")
+
+mongoose
+  .connect(
+    `mongodb+srv://incrediblesaizan22:rbUSjTg0Ouw45uZO@write-vibe.j83zr.mongodb.net/?retryWrites=true&w=majority&appName=write-vibe`
+  )
+  .then(() => {
+    console.log("MongoDB connected successfully");
+  })
+  .catch((error) => {
+    console.log("MongoDB connection error:", error);
+  });
 
 const userSchema = mongoose.Schema({
     name: String,
