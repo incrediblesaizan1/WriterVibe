@@ -2,7 +2,8 @@ const mongoose = require("mongoose")
 
 mongoose
   .connect(
-    `mongodb+srv://incrediblesaizan22:rbUSjTg0Ouw45uZO@write-vibe.j83zr.mongodb.net/?retryWrites=true&w=majority&appName=write-vibe`
+    // `mongodb+srv://incrediblesaizan22:rbUSjTg0Ouw45uZO@write-vibe.j83zr.mongodb.net/?retryWrites=true&w=majority&appName=write-vibe`
+    `mongoose.connect("mongodb://127.0.0.1:27017/miniproject")`
   )
   .then(() => {
     console.log("MongoDB connected successfully");

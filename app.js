@@ -11,24 +11,18 @@ const multer = require("./utils/multer.config");
 const isLoggedIn = require("./middleware/isloggedIn.middleware");
 const fs = require("fs");
 const cors = require("cors")
-const serverless = require('serverless-http');
 
-app.set("views", path.join(__dirname, "views"));
-app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(express.static(path.join(__dirname, "public")));
 app.use(cors())
 
 app.get("/", async (req, res) => {
   const post = await postModel.find().populate("user");
   res.render("feed", { post });
 });
-
-app.get("/ask", (req,res)=>{
-  res.send("ejs is not working")
-})
 
 app.get("/register", (req, res) => {
   res.render("index");
@@ -166,5 +160,6 @@ app.post("/edit/:postId", isLoggedIn, async (req, res) => {
   res.redirect("/profile");
 });
 
-// app.listen(process.env.PORT || 3000)
-module.exports.handler = serverless(app);
+app.listen(process.env.PORT, () => {
+  console.log(`Your server is running on http://127.0.0.1:${process.env.PORT}`);
+});
