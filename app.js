@@ -11,7 +11,9 @@ const multer = require("./utils/multer.config");
 const isLoggedIn = require("./middleware/isloggedIn.middleware");
 const fs = require("fs");
 const cors = require("cors")
+const serverless = require('serverless-http');
 
+app.set('views', path.join(__dirname, 'views'));
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -164,4 +166,5 @@ app.post("/edit/:postId", isLoggedIn, async (req, res) => {
   res.redirect("/profile");
 });
 
-app.listen(process.env.PORT || 3000)
+// app.listen(process.env.PORT || 3000)
+module.exports.handler = serverless(app);
