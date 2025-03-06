@@ -24,7 +24,9 @@ app.get("/", async (req, res) => {
   res.render("feed", { post });
 });
 
-
+app.get("/ask", (req,res)=>{
+  res.send("ejs is not working")
+})
 
 app.get("/register", (req, res) => {
   res.render("index");
